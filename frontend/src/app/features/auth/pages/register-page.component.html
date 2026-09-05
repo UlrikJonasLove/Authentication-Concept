@@ -1,0 +1,67 @@
+<app-auth-form-shell
+  eyebrow="Create your account"
+  title="Create your secure account"
+  subtitle="Register once and the backend will sign you in immediately."
+  footerPrompt="Already registered?"
+  footerLinkLabel="Sign in instead"
+  footerLink="/login"
+>
+  <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="submit()">
+    <div class="auth-form__field">
+      <label for="register-username">Username</label>
+      <input
+        id="register-username"
+        type="text"
+        formControlName="username"
+        autocomplete="username"
+        appAutofocus
+        [disabled]="isSubmitting()"
+      />
+      <app-validation-message [control]="registerForm.controls.username" [messages]="usernameMessages" />
+    </div>
+
+    <div class="auth-form__field">
+      <label for="register-password">Password</label>
+      <input
+        id="register-password"
+        type="password"
+        formControlName="password"
+        autocomplete="new-password"
+        [disabled]="isSubmitting()"
+      />
+      <app-validation-message [control]="registerForm.controls.password" [messages]="passwordMessages" />
+    </div>
+
+    <div class="auth-form__field">
+      <label for="register-confirm-password">Confirm password</label>
+      <input
+        id="register-confirm-password"
+        type="password"
+        formControlName="confirmPassword"
+        autocomplete="new-password"
+        [disabled]="isSubmitting()"
+      />
+      <app-validation-message
+        [control]="registerForm.controls.confirmPassword"
+        [messages]="confirmPasswordMessages"
+      />
+      @if (
+        registerForm.hasError('passwordsMismatch') &&
+        (registerForm.controls.confirmPassword.touched || registerForm.controls.confirmPassword.dirty)
+      ) {
+        <p class="auth-form__hint auth-form__hint--error" role="alert">Passwords must match.</p>
+      }
+    </div>
+
+    @if (submitError()) {
+      <p class="auth-form__error" role="alert">{{ submitError() }}</p>
+    }
+
+    <button type="submit" class="auth-form__submit" [disabled]="isSubmitting()">
+      @if (isSubmitting()) {
+        <app-loading-indicator />
+      }
+      <span>{{ isSubmitting() ? 'Creating account...' : 'Create account' }}</span>
+    </button>
+  </form>
+</app-auth-form-shell>

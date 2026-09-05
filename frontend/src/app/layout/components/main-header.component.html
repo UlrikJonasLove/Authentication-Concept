@@ -1,0 +1,25 @@
+<header class="main-header">
+  <div class="main-header__content">
+    <app-brand [compact]="true" />
+
+    <nav class="main-header__nav" aria-label="Primary">
+      <a routerLink="/dashboard" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        Dashboard
+      </a>
+    </nav>
+
+    <div class="main-header__actions">
+      <div class="main-header__user" aria-label="Current user">
+        <span class="main-header__avatar" aria-hidden="true">{{ initials() }}</span>
+        <span class="main-header__identity">
+          <strong>{{ username() }}</strong>
+          <span>Protected session</span>
+        </span>
+      </div>
+
+      <button type="button" class="main-header__logout" (click)="logout()" [disabled]="isLoggingOut()">
+        {{ isLoggingOut() ? 'Signing out...' : 'Sign out' }}
+      </button>
+    </div>
+  </div>
+</header>

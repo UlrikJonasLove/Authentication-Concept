@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  --font-body: 'Manrope', 'Segoe UI Variable', sans-serif;
+  --font-heading: 'Space Grotesk', 'Aptos', sans-serif;
+  --color-text-strong: #152238;
+  --color-text-muted: #5f6b80;
+  --color-surface: rgba(255, 255, 255, 0.72);
+  --color-accent-strong: #b45309;
+  --color-danger: #a3451e;
+  --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-strong);
+  background:
+    radial-gradient(circle at top left, rgba(254, 215, 170, 0.7), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.2), transparent 24%),
+    linear-gradient(180deg, #fff7ed 0%, #f7f6f3 48%, #f2f4f7 100%);
+}
+
+body,
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.95rem 1.25rem;
+  border: 0;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #17253b, #24324f);
+  box-shadow: 0 16px 32px rgba(21, 34, 56, 0.16);
+  color: #fffaf1;
+  cursor: pointer;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease,
+    box-shadow 180ms ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px rgba(21, 34, 56, 0.2);
+}
+
+button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+}
+
+input {
+  min-height: 3.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(24, 33, 52, 0.12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--color-text-strong);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: rgba(180, 83, 9, 0.55);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.14);
+}
+
+input:disabled {
+  background: rgba(239, 241, 245, 0.95);
+  cursor: not-allowed;
+}
+
+code {
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.45rem;
+  background: rgba(23, 37, 61, 0.08);
+  font-family: 'Cascadia Code', 'Consolas', monospace;
+  font-size: 0.92em;
+}

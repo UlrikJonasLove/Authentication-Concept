@@ -1,0 +1,30 @@
+<section class="dashboard-page">
+  <div class="dashboard-page__hero">
+    <div>
+      <span class="dashboard-page__eyebrow">Protected area</span>
+      <h1>Welcome, {{ user()?.username }}.</h1>
+      <p>
+        Your session was restored or created without ever writing the access token to
+        <code>localStorage</code> or <code>sessionStorage</code>.
+      </p>
+    </div>
+
+    <article class="dashboard-page__session-card">
+      <span>Current session</span>
+      <strong>{{ user()?.userId }}</strong>
+      <p>
+        Access token expiry:
+        <strong>{{ accessTokenExpiresAt() | date: 'medium' }}</strong>
+      </p>
+    </article>
+  </div>
+
+  <div class="dashboard-page__grid">
+    @for (fact of sessionFacts(); track fact.title) {
+      <article class="dashboard-page__tile">
+        <h2>{{ fact.title }}</h2>
+        <p>{{ fact.description }}</p>
+      </article>
+    }
+  </div>
+</section>

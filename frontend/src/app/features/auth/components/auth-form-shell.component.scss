@@ -1,0 +1,37 @@
+.auth-form-shell {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.auth-form-shell__copy h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.auth-form-shell__copy p {
+  margin: 0.85rem 0 0;
+  color: var(--color-text-muted);
+}
+
+.auth-form-shell__eyebrow {
+  display: inline-flex;
+  margin-bottom: 0.9rem;
+  color: var(--color-accent-strong);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.auth-form-shell__footer {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.auth-form-shell__footer a {
+  color: var(--color-text-strong);
+  font-weight: 700;
+}

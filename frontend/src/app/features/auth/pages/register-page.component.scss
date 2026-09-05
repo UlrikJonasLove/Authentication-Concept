@@ -1,0 +1,39 @@
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-form__field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.auth-form__field label {
+  font-weight: 600;
+  color: var(--color-text-strong);
+}
+
+.auth-form__field input {
+  width: 100%;
+}
+
+.auth-form__hint {
+  margin: 0.45rem 0 0;
+  font-size: 0.88rem;
+}
+
+.auth-form__hint--error {
+  color: var(--color-danger);
+}
+
+.auth-form__error {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 239, 220, 0.92);
+  color: var(--color-danger);
+}
+
+.auth-form__submit {
+  justify-content: center;
+}

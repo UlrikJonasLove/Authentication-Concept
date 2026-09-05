@@ -1,0 +1,7 @@
+<span class="loading-indicator" [attr.role]="label() ? 'status' : null" [attr.aria-label]="label() ?? null">
+  <span class="loading-indicator__spinner" aria-hidden="true"></span>
+
+  @if (label()) {
+    <span class="loading-indicator__label">{{ label() }}</span>
+  }
+</span>

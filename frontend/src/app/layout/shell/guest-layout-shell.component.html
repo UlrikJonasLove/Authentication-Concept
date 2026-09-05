@@ -1,0 +1,37 @@
+<main class="guest-layout">
+  <section class="guest-layout__panel guest-layout__panel--showcase">
+    <app-brand />
+
+    <div class="guest-layout__copy">
+      <span class="guest-layout__eyebrow">Secure portfolio access</span>
+      <h1>Modern session management with JWTs in memory and refresh cookies in the background.</h1>
+      <p>
+        This frontend restores sessions on startup, renews access tokens automatically, and keeps
+        the browser storage clean.
+      </p>
+    </div>
+
+    <div class="guest-layout__highlights" aria-label="Security highlights">
+      <article>
+        <strong>Silent restore</strong>
+        <span>Sessions come back on refresh by calling the renew endpoint at startup.</span>
+      </article>
+      <article>
+        <strong>Rotation aware</strong>
+        <span>Refresh-token cookies stay server-managed with rotation and revocation support.</span>
+      </article>
+      <article>
+        <strong>Retry on expiry</strong>
+        <span>Concurrent 401 responses wait for one renew request before replaying.</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="guest-layout__panel guest-layout__panel--form">
+    @if (authService.authNotice()) {
+      <p class="guest-layout__notice" role="status">{{ authService.authNotice() }}</p>
+    }
+
+    <router-outlet />
+  </section>
+</main>

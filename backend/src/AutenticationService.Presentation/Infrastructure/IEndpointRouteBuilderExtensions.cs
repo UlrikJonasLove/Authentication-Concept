@@ -1,0 +1,34 @@
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace AutenticationService.Presentation.Infrastructure;
+
+public static class IEndpointRouteBuilderExtensions
+{
+	public static RouteHandlerBuilder MapGet(
+		this IEndpointRouteBuilder builder,
+		Delegate handler,
+		[StringSyntax("Route")] string pattern = "") =>
+		builder.MapGet(pattern, handler)
+			.WithName(handler.Method.Name);
+
+	public static RouteHandlerBuilder MapPost(
+		this IEndpointRouteBuilder builder,
+		Delegate handler,
+		[StringSyntax("Route")] string pattern = "") =>
+		builder.MapPost(pattern, handler)
+			.WithName(handler.Method.Name);
+
+	public static RouteHandlerBuilder MapPut(
+		this IEndpointRouteBuilder builder,
+		Delegate handler,
+		[StringSyntax("Route")] string pattern = "") =>
+		builder.MapPut(pattern, handler)
+			.WithName(handler.Method.Name);
+
+	public static RouteHandlerBuilder MapDelete(
+		this IEndpointRouteBuilder builder,
+		Delegate handler,
+		[StringSyntax("Route")] string pattern) =>
+		builder.MapDelete(pattern, handler)
+			.WithName(handler.Method.Name);
+}

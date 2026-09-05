@@ -1,0 +1,8 @@
+﻿namespace AutenticationService.Domain.Enums;
+
+public enum ExampleEnum
+{
+	Enum1, 
+	Enum2,
+	Enum3
+}

@@ -1,0 +1,46 @@
+<app-auth-form-shell
+  eyebrow="Welcome back"
+  title="Sign in to your workspace"
+  subtitle="Use your portfolio credentials to access the protected area."
+  footerPrompt="Need an account?"
+  footerLinkLabel="Create one"
+  footerLink="/register"
+>
+  <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="submit()">
+    <div class="auth-form__field">
+      <label for="login-username">Username</label>
+      <input
+        id="login-username"
+        type="text"
+        formControlName="username"
+        autocomplete="username"
+        appAutofocus
+        [disabled]="isSubmitting()"
+      />
+      <app-validation-message [control]="loginForm.controls.username" [messages]="usernameMessages" />
+    </div>
+
+    <div class="auth-form__field">
+      <label for="login-password">Password</label>
+      <input
+        id="login-password"
+        type="password"
+        formControlName="password"
+        autocomplete="current-password"
+        [disabled]="isSubmitting()"
+      />
+      <app-validation-message [control]="loginForm.controls.password" [messages]="passwordMessages" />
+    </div>
+
+    @if (submitError()) {
+      <p class="auth-form__error" role="alert">{{ submitError() }}</p>
+    }
+
+    <button type="submit" class="auth-form__submit" [disabled]="isSubmitting()">
+      @if (isSubmitting()) {
+        <app-loading-indicator />
+      }
+      <span>{{ isSubmitting() ? 'Signing in...' : 'Sign in' }}</span>
+    </button>
+  </form>
+</app-auth-form-shell>
