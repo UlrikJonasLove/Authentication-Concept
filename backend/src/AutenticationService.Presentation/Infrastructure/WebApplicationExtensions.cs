@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
-using AutenticationService.Presentation.Infrastructure;
 
 namespace AutenticationService.Presentation.Infrastructure;
 
 public static class WebApplicationExtensions
 {
-	public static RouteGroupBuilder MapGroup(this WebApplication app, EndpointGroupBase group)
+	public static RouteGroupBuilder MapGroup(
+		this WebApplication app,
+		EndpointGroupBase group)
 	{
 		var groupName = group.GetType().Name.ToLower();
 
@@ -14,14 +15,20 @@ public static class WebApplicationExtensions
 			.WithTags(groupName);
 	}
 
-	public static WebApplication MapEndpoints(this WebApplication app)
+	public static WebApplication MapEndpoints(
+		this WebApplication app)
 	{
 		var endpointGroupType = typeof(EndpointGroupBase);
 
 		var assembly = Assembly.GetExecutingAssembly();
 
-		var endpointGroupTypes = assembly.GetExportedTypes()
-			.Where(t => t.IsSubclassOf(endpointGroupType));
+		var endpointGroupTypes = assembly
+			.GetExportedTypes()
+			.Where(type => type.IsSubclassOf(endpointGroupType))
+			.ToList();
+
+		foreach (var type in endpointGroupTypes)
+			Console.WriteLine($"Mapping endpoint group: {type.FullName}");
 
 		foreach (var type in endpointGroupTypes)
 		{
