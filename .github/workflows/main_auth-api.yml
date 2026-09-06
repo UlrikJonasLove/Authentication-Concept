@@ -29,18 +29,23 @@ jobs:
           dotnet-version: "10.x"
 
       - name: Build with dotnet
-        working-directory: ./backend
-        run: dotnet build --configuration Release
+        run: >
+          dotnet build
+          backend/src/AutenticationService.Presentation/AutenticationService.Presentation.csproj
+          --configuration Release
 
       - name: dotnet publish
-        working-directory: ./backend
-        run: dotnet publish --configuration Release --output ./publish
+        run: >
+          dotnet publish
+          backend/src/AutenticationService.Presentation/AutenticationService.Presentation.csproj
+          --configuration Release
+          --output ./publish
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ./backend/publish
+          path: ./publish
 
   deploy:
     runs-on: ubuntu-latest
