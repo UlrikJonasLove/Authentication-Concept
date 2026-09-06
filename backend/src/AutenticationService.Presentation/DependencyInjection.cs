@@ -109,7 +109,7 @@ public static class DependencyInjection
 					corsPolicyBuilder
 						.WithOrigins(
 							"https://localhost:4200",
-							"https://auth-api-axdkhafcfqc5c7c8.swedencentral-01.azurewebsites.net/api")
+							"https://proud-pond-095b8270f.5.azurestaticapps.net")
 						.AllowAnyHeader()
 						.AllowAnyMethod()
 						.AllowCredentials();
